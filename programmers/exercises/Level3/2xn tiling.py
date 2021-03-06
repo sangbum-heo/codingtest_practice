@@ -15,6 +15,9 @@ def solution(n):
     # i번째 칸부터 마지막 -1번째 칸까지 j를 통해 반복?
     # n의 값이 크다면 i 안에서 수많은 경우의 수가 생기는데.. 그걸 반복적으로 캐치해야해
 
+    # 지금 이대로면 for 안에 for 안에 for 안에 계속 무한반복으로 만들어야되는건가?
+    # 아니면 새로운 경우의 수에 대한 for문을 만들 수 있는걸까?
+
     for i in range(1,n):
         answer+=1 # 반복되지 않는 요소, i의 index값에 = 하나만 들어간 상황.
         print("i :",i)
@@ -26,7 +29,7 @@ def solution(n):
             for k in range(j+2,n,2):
                 answer+=1
                 print("k :",k)
-            print("=====")    
+        print("=====")        
 
     # for i in range(1,n):
     #     print(" i :",i)
