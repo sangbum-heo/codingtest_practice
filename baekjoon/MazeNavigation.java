@@ -5,12 +5,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
-/*
+/* 
+↓ input ↓
+
 4 6
 110110
 110110
 111111
 111101
+
 */
 
 // 제출시 Main으로 클래스명 변경 및 print 함수 제거
@@ -58,8 +61,11 @@ public class MazeNavigation {
 		// 확인용 출력
 		nextPositions.forEach((s) -> System.out.println("first) nextPo : "+s[0] + "," + s[1]));
 		
+		// 목표 지점에 도착하지 않았다면 계속 반복
 		while(maze[n-1][m-1] != '2') {
+			// nextPositions에 넣기 전 임시 좌표 저장 list
 			ArrayList<Integer[]> tempPositions = new ArrayList<Integer[]>();
+
 			for(int j = 0; j < nextPositions.size(); j++) {
 				ArrayList<Integer[]> thisPositions = check(nextPositions.get(j)[0], nextPositions.get(j)[1]);
 				
@@ -68,15 +74,20 @@ public class MazeNavigation {
 					int nextX = thisPositions.get(i)[0];
 					int nextY = thisPositions.get(i)[1];
 					maze[nextX][nextY] = '2';
+
+					// 다음 반복을 위해 현재 좌표 임시 저장
 					tempPositions.add(new Integer[] {nextX, nextY});
-					
 				}
 				
 			}
+
+			// 다음 반복에 필요한 좌표를 넘겨준다
 			nextPositions = tempPositions;
+
 			// 확인용 출력
 			nextPositions.forEach((s) -> System.out.println("nextPo : "+s[0] + "," + s[1]));
 			print();
+
 			k++;
 		}
 		
@@ -111,6 +122,7 @@ public class MazeNavigation {
 			
 			return list;
 		}
+
 	// 확인용 출력 함수
 	static void print() {
 		for(char[] line : maze) {
